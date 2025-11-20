@@ -6,25 +6,15 @@ function loadCategory() {
         .catch(err => console.error(err));
 }
 
-// demo obj 
-// {category_id: '1003', category: 'Comedy'}
-// category
-// : 
-// "Comedy"
-// category_id
-// : 
-// "1003"
-// [[Prototype]]
-// : 
-// Object
 const displayCategory = (category) => {
     const categoryBtnContainer = document.getElementById('category-btn-container');
     category.forEach(item => {
         
         const categoryBtn = document.createElement('button');
+        
         categoryBtn.innerHTML = `
             
-            <button class="btn ">${item.category}</button>
+            <button class="btn " id="${item.category_id}">${item.category}</button>
             `
         categoryBtnContainer.appendChild(categoryBtn);
     })
