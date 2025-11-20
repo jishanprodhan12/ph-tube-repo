@@ -5,7 +5,7 @@ function loadCategory() {
         .then(date => displayCategory(date.categories))
         .catch(err => console.error(err));
 }
-
+// display category button 
 const displayCategory = (category) => {
     const categoryBtnContainer = document.getElementById('category-btn-container');
     category.forEach(item => {
@@ -19,4 +19,10 @@ const displayCategory = (category) => {
         categoryBtnContainer.appendChild(categoryBtn);
     })
 }
+
+// loadVideos
+function loadVideos(){
+    fetch('')
+}
+
 loadCategory();
