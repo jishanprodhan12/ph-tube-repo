@@ -34,16 +34,15 @@ const displayVideos = (videos) => {
 
     // Set grid layout
     videosContainer.className =
-        "w-11/12 mx-auto border-2 border-red-400 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-10";
+        "w-11/12 mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-10";
 
     // Clear old cards before adding new
     videosContainer.innerHTML = "";
 
     videos.forEach(item => {
-console.log(item.others.views)
         const videoCard = document.createElement('div');
         videoCard.className = "card bg-base-100 shadow rounded-xl p-0";
-        
+
         videoCard.innerHTML = `
             <div class="card bg-base-100 shadow rounded-xl overflow-hidden">
     <!-- Thumbnail -->
@@ -61,7 +60,13 @@ console.log(item.others.views)
         <!-- Channel info -->
         <div class="flex items-center gap-2 mt-1">
             <img src="${item.authors[0].profile_picture}" alt="Channel" class="w-8 h-8 rounded-full object-cover">
-            <p class="text-sm text-gray-600">${item.authors[0].profile_name}</p>
+            <div class="flex items-center justify-between gap-4">
+            <p class="text-sm text-gray-600">${item.authors[0].profile_name}
+            </p>
+            <span>
+                <img src="./assets/Group 3.png" alt="">
+            </span>
+            </div>
         </div>
 
         <!-- Views / Date -->
