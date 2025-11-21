@@ -22,7 +22,12 @@ const displayCategory = (category) => {
 
 // loadVideos
 function loadVideos(){
-    fetch('')
+    fetch('https://openapi.programming-hero.com/api/phero-tube/videos')
+    .then(res=> res.json())
+    .then(data=> console.log(data.videos))
+    .catch(err=> console.error(err))
 }
 
+
 loadCategory();
+loadVideos();
