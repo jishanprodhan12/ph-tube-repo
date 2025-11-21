@@ -64,7 +64,7 @@ const displayVideos = (videos) => {
             <p class="text-sm text-gray-600">${item.authors[0].profile_name}
             </p>
             <span>
-                <img src="./assets/Group 3.png" alt="">
+                ${(item.authors[0].verified)?`<img src="./assets/Group 3.png" alt="">`:''}
             </span>
             </div>
         </div>
@@ -77,6 +77,7 @@ const displayVideos = (videos) => {
 </div>
  
         `;
+        console.log(item.authors[0].verified)
 
         videosContainer.appendChild(videoCard);
     });
