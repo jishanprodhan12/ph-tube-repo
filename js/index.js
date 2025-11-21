@@ -40,7 +40,7 @@ const displayVideos = (videos) => {
     videosContainer.innerHTML = "";
 
     videos.forEach(item => {
-console.log(item.authors[0].profile_picture)
+console.log(item.others.views)
         const videoCard = document.createElement('div');
         videoCard.className = "card bg-base-100 shadow rounded-xl p-0";
         
@@ -66,7 +66,7 @@ console.log(item.authors[0].profile_picture)
 
         <!-- Views / Date -->
         <p class="text-sm text-gray-500 mt-1">
-            VIEWS views • POSTED_DATE
+                ${item.others.views}  views
         </p>
     </div>
 </div>
