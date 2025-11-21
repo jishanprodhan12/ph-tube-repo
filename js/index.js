@@ -61,7 +61,7 @@ console.log(item.authors[0].profile_picture)
         <!-- Channel info -->
         <div class="flex items-center gap-2 mt-1">
             <img src="${item.authors[0].profile_picture}" alt="Channel" class="w-8 h-8 rounded-full object-cover">
-            <p class="text-sm text-gray-600">CHANNEL_NAME</p>
+            <p class="text-sm text-gray-600">${item.authors[0].profile_name}</p>
         </div>
 
         <!-- Views / Date -->
