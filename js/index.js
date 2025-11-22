@@ -34,7 +34,7 @@ const displayVideos = (videos) => {
 
     // Set grid layout
     videosContainer.className =
-        "w-11/12 mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-10";
+        "w-11/12 mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-10  relative";
 
     // Clear old cards before adding new
     videosContainer.innerHTML = "";
@@ -73,11 +73,12 @@ const displayVideos = (videos) => {
         <p class="text-sm text-gray-500 mt-1">
                 ${item.others.views}  views
         </p>
+        <p class = "bg-black text-white text-sm w-40 absolute top-40 right-5"> ${item.others.posted_date} </p>
     </div>
 </div>
  
         `;
-        console.log(item.authors[0].verified)
+        console.log(item.others.posted_date)
 
         videosContainer.appendChild(videoCard);
     });
