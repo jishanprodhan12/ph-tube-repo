@@ -42,7 +42,7 @@ const displayVideos = (videos) => {
     videos.forEach(item => {
         const videoCard = document.createElement('div');
         const postedDate = convertSeconds(item.others.posted_date)
-        
+
         videoCard.className = "card bg-base-100 shadow rounded-xl p-0";
 
         videoCard.innerHTML = `
@@ -75,7 +75,9 @@ const displayVideos = (videos) => {
         <p class="text-sm text-gray-500 mt-1">
                 ${item.others.views}  views
         </p>
-        <p class = "bg-black text-white text-center text-sm w-40 absolute top-40 right-5">  ${postedDate.hours}    hrs ${postedDate.minutes}mins ago </p>
+        ${(postedDate.hours === 0 && postedDate.minutes === 0) ? '' : `<p class="bg-black text-white text-center text-sm w-40 absolute top-40 right-5">  ${postedDate.hours}    hrs ${postedDate.minutes}mins ago </p>` }
+
+        
     </div>
 </div>
  
