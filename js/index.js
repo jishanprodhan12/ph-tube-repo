@@ -41,6 +41,8 @@ const displayVideos = (videos) => {
 
     videos.forEach(item => {
         const videoCard = document.createElement('div');
+        const postedDate = convertSeconds(item.others.posted_date)
+        
         videoCard.className = "card bg-base-100 shadow rounded-xl p-0";
 
         videoCard.innerHTML = `
@@ -64,7 +66,7 @@ const displayVideos = (videos) => {
             <p class="text-sm text-gray-600">${item.authors[0].profile_name}
             </p>
             <span>
-                ${(item.authors[0].verified)?`<img src="./assets/Group 3.png" alt="">`:''}
+                ${(item.authors[0].verified) ? `<img src="./assets/Group 3.png" alt="">` : ''}
             </span>
             </div>
         </div>
@@ -73,16 +75,44 @@ const displayVideos = (videos) => {
         <p class="text-sm text-gray-500 mt-1">
                 ${item.others.views}  views
         </p>
-        <p class = "bg-black text-white text-sm w-40 absolute top-40 right-5"> ${item.others.posted_date} </p>
+        <p class = "bg-black text-white text-center text-sm w-40 absolute top-40 right-5">  ${postedDate.hours}    hrs ${postedDate.minutes}mins ago </p>
     </div>
 </div>
  
         `;
-        console.log(item.others.posted_date)
-
         videosContainer.appendChild(videoCard);
     });
 };
+
+function convertSeconds(seconds) {
+    const year = 31536000;   // 365 days
+    const month = 2592000;   // 30 days
+    const week = 604800;     // 7 days
+    const day = 86400;       // 1 day
+    const hour = 3600;       // 1 hour
+    const minute = 60;       // 1 minute
+
+    const y = Math.floor(seconds / year);
+    seconds %= year;
+
+    const m = Math.floor(seconds / month);
+    seconds %= month;
+
+    const w = Math.floor(seconds / week);
+    seconds %= week;
+
+    const d = Math.floor(seconds / day);
+    seconds %= day;
+
+    const h = Math.floor(seconds / hour);
+    seconds %= hour;
+
+    const min = Math.floor(seconds / minute);
+    const sec = seconds % minute;
+
+    return { years: y, months: m, weeks: w, days: d, hours: h, minutes: min, seconds: sec };
+}
+
 
 loadCategory();
 loadVideos();
