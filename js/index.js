@@ -16,8 +16,17 @@ const displayCategory = (category) => {
             
             <button class="btn " id="${item.category_id}">${item.category}</button>
             `
-        categoryBtnContainer.appendChild(categoryBtn);
+            categoryBtnContainer.appendChild(categoryBtn);
+            categoryBtn.onclick = () => loadCategoryVideos(item.category_id);
+
     })
+}
+
+const loadCategoryVideos = (id) => {
+    fetch(`https://openapi.programming-hero.com/api/phero-tube/category/${id}`)
+    .then(res=> res.json())
+    .then(data=> console.log(data))
+    .catch(err=> console.error('error Happend' , err))
 }
 
 // loadVideos
@@ -75,7 +84,7 @@ const displayVideos = (videos) => {
         <p class="text-sm text-gray-500 mt-1">
                 ${item.others.views}  views
         </p>
-        ${(postedDate.hours === 0 && postedDate.minutes === 0) ? '' : `<p class="bg-black text-white text-center text-sm w-40 absolute top-40 right-5">  ${postedDate.hours}    hrs ${postedDate.minutes}mins ago </p>` }
+        ${(postedDate.hours === 0 && postedDate.minutes === 0) ? '' : `<p class="bg-black text-white text-center text-sm w-40 absolute top-40 right-5">  ${postedDate.hours}    hrs ${postedDate.minutes}mins ago </p>`}
 
         
     </div>
