@@ -25,7 +25,7 @@ const displayCategory = (category) => {
 const loadCategoryVideos = (id) => {
     fetch(`https://openapi.programming-hero.com/api/phero-tube/category/${id}`)
     .then(res=> res.json())
-    .then(data=> console.log(data))
+    .then(data=> displayVideos(data.category))
     .catch(err=> console.error('error Happend' , err))
 }
 
