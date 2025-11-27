@@ -16,17 +16,17 @@ const displayCategory = (category) => {
             
             <button class="btn " id="${item.category_id}">${item.category}</button>
             `
-            categoryBtnContainer.appendChild(categoryBtn);
-            categoryBtn.onclick = () => loadCategoryVideos(item.category_id);
+        categoryBtnContainer.appendChild(categoryBtn);
+        categoryBtn.onclick = () => loadCategoryVideos(item.category_id);
 
     })
 }
 
 const loadCategoryVideos = (id) => {
     fetch(`https://openapi.programming-hero.com/api/phero-tube/category/${id}`)
-    .then(res=> res.json())
-    .then(data=> displayVideos(data.category))
-    .catch(err=> console.error('error Happend' , err))
+        .then(res => res.json())
+        .then(data => displayVideos(data.category))
+        .catch(err => console.error('error Happend', err))
 }
 
 // loadVideos
@@ -39,8 +39,22 @@ function loadVideos() {
 
 
 const displayVideos = (videos) => {
-    const videosContainer = document.getElementById('videos-container');
 
+    const videosContainer = document.getElementById('videos-container');
+    videosContainer.innerHTML = '';
+    if (videos.length === 0) {
+        videosContainer.classList.remove('grid')
+        videosContainer.innerHTML = `
+         <div class="text-center font-bold flex items-center justify-center flex-col gap-3 md:gap-5">
+                <div class="h-56 w-56">
+                    <img src="./assets/Icon.png" alt="" class="w-full">
+                </div>
+                <h1>Opps! Sorry There is no Content here </h1>
+            </div>
+        `;
+        return;
+    }
+    videosContainer.classList.add('grid')
     // Set grid layout
     videosContainer.className =
         "w-11/12 mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-10  relative";
