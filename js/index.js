@@ -14,7 +14,7 @@ const displayCategory = (category) => {
 
         categoryBtn.innerHTML = `
             
-            <button class="btn " id="${item.category_id}">${item.category}</button>
+            <button class="category-btn btn" id="${item.category_id}">${item.category}</button>
             `
         categoryBtnContainer.appendChild(categoryBtn);
         categoryBtn.onclick = () => loadCategoryVideos(item.category_id);
@@ -22,10 +22,22 @@ const displayCategory = (category) => {
     })
 }
 
+removeActiveClass=()=>{
+    const allBtn = document.getElementsByClassName('category-btn');
+    for(const btn of allBtn){
+        btn.classList.remove('active');
+    }
+}
 const loadCategoryVideos = (id) => {
     fetch(`https://openapi.programming-hero.com/api/phero-tube/category/${id}`)
         .then(res => res.json())
-        .then(data => displayVideos(data.category))
+        .then(data => {
+            removeActiveClass();
+            const activeBtn = document.getElementById(`${id}`);
+            activeBtn.classList.add("active");
+
+            displayVideos(data.category)
+        })
         .catch(err => console.error('error Happend', err))
 }
 
