@@ -136,7 +136,7 @@ function showDetailsOnUI(data){
    const detailsContainer = document.getElementById('details-container');
     detailsContainer.innerText= '';
    const detailsDiv = document.createElement('div');
-   console.log(data.thumbnail)
+
    detailsDiv.innerHTML = `
     <div class="card bg-base-100 shadow rounded-xl overflow-hidden">
                     <!-- Thumbnail -->
