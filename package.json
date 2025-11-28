@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "glob": "^13.0.0"
+  },
+  "name": "ph_tube-_repo",
+  "version": "1.0.0",
+  "main": "tailwind.config.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
