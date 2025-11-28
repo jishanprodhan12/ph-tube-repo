@@ -16,6 +16,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+        <!-- link css  -->
+    <link rel="stylesheet" href="./style/style.css">
 </head>
 
 <body class="roboto ">
@@ -43,7 +45,7 @@
         <div class="divider py-2 w-11/12 mx-auto "></div>
         <!-- display all category btn  -->
         <nav class="w-11/12 mx-auto py-3 flex items-center justify-evenly gap-3 md:gap-5" id="category-btn-container">
-
+                <button type="button"class='btn active category-btn' onclick="loadVideos() , allBtnActive()" id="all-video-btn">All</button>
         </nav>
     </header>
     <main class="xl:w-11/12 mx-auto py-3 md:py-5 ">
@@ -52,7 +54,7 @@
         </section>
     </main>
     <footer>
-
+           
     </footer>
 
     <script src="./js/index.js"></script>

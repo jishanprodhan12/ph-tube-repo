@@ -22,9 +22,9 @@ const displayCategory = (category) => {
     })
 }
 
-removeActiveClass=()=>{
+removeActiveClass = () => {
     const allBtn = document.getElementsByClassName('category-btn');
-    for(const btn of allBtn){
+    for (const btn of allBtn) {
         btn.classList.remove('active');
     }
 }
@@ -40,7 +40,11 @@ const loadCategoryVideos = (id) => {
         })
         .catch(err => console.error('error Happend', err))
 }
-
+// all video btn 
+const allBtnActive = () => {
+    removeActiveClass();
+    document.getElementById("all-video-btn").classList.add('active');
+}
 // loadVideos
 function loadVideos() {
     fetch('https://openapi.programming-hero.com/api/phero-tube/videos')
