@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-        <!-- link css  -->
+    <!-- link css  -->
     <link rel="stylesheet" href="./style/style.css">
 </head>
 
@@ -45,16 +45,29 @@
         <div class="divider py-2 w-11/12 mx-auto "></div>
         <!-- display all category btn  -->
         <nav class="w-11/12 mx-auto py-3 flex items-center justify-evenly gap-3 md:gap-5" id="category-btn-container">
-                <button type="button"class='btn active category-btn' onclick="loadVideos() , allBtnActive()" id="all-video-btn">All</button>
+            <button type="button" class='btn active category-btn' onclick="loadVideos() , allBtnActive()"
+                id="all-video-btn">All</button>
         </nav>
     </header>
     <main class="xl:w-11/12 mx-auto py-3 md:py-5 ">
-        <section class="w-11/12 mx-auto  grid col-span-1 md:col-span-2 lg:col-span-3 xl:col-span-4 gap-5 md:gap-14 " id="videos-container">
-            
+        <section class="w-11/12 mx-auto  grid col-span-1 md:col-span-2 lg:col-span-3 xl:col-span-4 gap-5 md:gap-14 "
+            id="videos-container">
+
         </section>
     </main>
     <footer>
-           
+        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+                <h3 class="text-lg font-bold">Hello!</h3>
+                <p class="py-4">Press ESC key or click the button below to close</p>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
     </footer>
 
     <script src="./js/index.js"></script>

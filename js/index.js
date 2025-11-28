@@ -116,6 +116,7 @@ const displayVideos = (videos) => {
         </p>
         ${(postedDate.hours === 0 && postedDate.minutes === 0) ? '' : `<p class="bg-black text-white text-center text-sm w-40 absolute top-40 right-5">  ${postedDate.hours}    hrs ${postedDate.minutes}mins ago </p>`}
 
+        <button class="btn" onclick="my_modal_5.showModal()">Details</button>
         
     </div>
 </div>
