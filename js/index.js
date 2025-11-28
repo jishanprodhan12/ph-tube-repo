@@ -116,7 +116,7 @@ const displayVideos = (videos) => {
         </p>
         ${(postedDate.hours === 0 && postedDate.minutes === 0) ? '' : `<p class="bg-black text-white text-center text-sm w-40 absolute top-40 right-5">  ${postedDate.hours}    hrs ${postedDate.minutes}mins ago </p>`}
 
-        <button class="btn" onclick="my_modal_5.showModal()">Details</button>
+        <button class="btn" onclick="my_modal_5.showModal(), showDetails('${item.video_id}')">Details</button>
         
     </div>
 </div>
@@ -125,6 +125,58 @@ const displayVideos = (videos) => {
         videosContainer.appendChild(videoCard);
     });
 };
+
+function showDetails(id){
+    fetch(`https://openapi.programming-hero.com/api/phero-tube/video/${id}`)
+    .then(res=> res.json())
+    .then(data => showDetailsOnUI(data.video))
+    .catch(err => console.log(err));
+}
+function showDetailsOnUI(data){
+   const detailsContainer = document.getElementById('details-container');
+    detailsContainer.innerText= '';
+   const detailsDiv = document.createElement('div');
+   console.log(data.thumbnail)
+   detailsDiv.innerHTML = `
+    <div class="card bg-base-100 shadow rounded-xl overflow-hidden">
+                    <!-- Thumbnail -->
+                    <figure class="w-full">
+                        <img src="${data.thumbnail}" alt="Video Thumbnail" class="w-full h-[200px] object-cover">
+                    </figure>
+
+                    <!-- Card body -->
+                    <div class="card-body p-3">
+                        <!-- Title -->
+                        <h2 class="card-title text-base font-semibold">
+                            ${data.title}
+                        </h2>
+
+                        <!-- Channel info -->
+                        <div class="flex items-center gap-2 mt-1">
+                            <img src="${data.authors[0].profile_picture}" alt="Channel"
+                                class="w-8 h-8 rounded-full object-cover">
+                            <div class="flex items-center justify-between gap-4">
+                                <p class="text-sm font-bold text-gray-600">${data.authors[0].profile_name}
+                                </p>
+                                <span>
+                                    ${(data.authors[0].verified) ? `<img src="./assets/Group 3.png" alt="">` : ''}
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Views / Date -->
+                        <p class="text-sm text-gray-500 mt-1">
+                            ${data.others.views} views
+                        </p>
+                    
+                        <div class= " text-sm  text-gray-400" >
+                        ${data.description}
+                        </div>
+                    </div>
+                </div>
+   `
+   detailsContainer.appendChild(detailsDiv);
+}
 
 function convertSeconds(seconds) {
     const year = 31536000;   // 365 days
