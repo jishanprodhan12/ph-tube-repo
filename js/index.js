@@ -207,6 +207,9 @@ function convertSeconds(seconds) {
     return { years: y, months: m, weeks: w, days: d, hours: h, minutes: min, seconds: sec };
 }
 
+document.getElementById('search-input').addEventListener('keyup',(e)=>{
+    console.log(e.target.value);
+})
 
 loadCategory();
 loadVideos();
