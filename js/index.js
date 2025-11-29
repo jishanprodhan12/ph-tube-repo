@@ -126,18 +126,18 @@ const displayVideos = (videos) => {
     });
 };
 
-function showDetails(id){
+function showDetails(id) {
     fetch(`https://openapi.programming-hero.com/api/phero-tube/video/${id}`)
-    .then(res=> res.json())
-    .then(data => showDetailsOnUI(data.video))
-    .catch(err => console.log(err));
+        .then(res => res.json())
+        .then(data => showDetailsOnUI(data.video))
+        .catch(err => console.log(err));
 }
-function showDetailsOnUI(data){
-   const detailsContainer = document.getElementById('details-container');
-    detailsContainer.innerText= '';
-   const detailsDiv = document.createElement('div');
+function showDetailsOnUI(data) {
+    const detailsContainer = document.getElementById('details-container');
+    detailsContainer.innerText = '';
+    const detailsDiv = document.createElement('div');
 
-   detailsDiv.innerHTML = `
+    detailsDiv.innerHTML = `
     <div class="card bg-base-100 shadow rounded-xl overflow-hidden">
                     <!-- Thumbnail -->
                     <figure class="w-full">
@@ -175,7 +175,7 @@ function showDetailsOnUI(data){
                     </div>
                 </div>
    `
-   detailsContainer.appendChild(detailsDiv);
+    detailsContainer.appendChild(detailsDiv);
 }
 
 function convertSeconds(seconds) {
@@ -207,8 +207,17 @@ function convertSeconds(seconds) {
     return { years: y, months: m, weeks: w, days: d, hours: h, minutes: min, seconds: sec };
 }
 
-document.getElementById('search-input').addEventListener('keyup',(e)=>{
-    console.log(e.target.value);
+document.getElementById('search-input').addEventListener('keyup', (e) => {
+    const searchInput = e.target.value;
+    fetch(`https://openapi.programming-hero.com/api/phero-tube/videos?title=${searchInput}`)
+        .then(res => res.json())
+        .then(data => {
+            setTimeout(() => {
+                
+                displayVideos(data.videos)
+            }, 100)
+        })
+        .catch(err => console.error(err));
 })
 
 loadCategory();
