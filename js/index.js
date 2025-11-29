@@ -220,5 +220,12 @@ document.getElementById('search-input').addEventListener('keyup', (e) => {
         .catch(err => console.error(err));
 })
 
+document.getElementById('logo-phTube').addEventListener('click',()=>{
+    setTimeout(()=>{
+        
+        window.location.href('./index.html')
+    },308000)
+})
+
 loadCategory();
 loadVideos();
